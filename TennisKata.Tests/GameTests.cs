@@ -143,4 +143,18 @@ public class GameTests
         Assert.True(game.IsOver());
         Assert.Equal(_playerOne, game.Winner());
     }
+
+    [Fact]
+    public void GameCanBeWonWithoutReachingDeuce()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+
+        Assert.True(game.IsOver());
+        Assert.Equal(_playerOne, game.Winner());
+    }
 }
