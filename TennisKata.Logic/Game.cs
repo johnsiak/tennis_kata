@@ -23,6 +23,11 @@ public class Game
             }
         }
 
+        if (_pointsPlayerOne == 2 && _pointsPlayerTwo == 1)
+        {
+            return "Thirty-Fifteen";
+        }
+
         if (_pointsPlayerOne == 1)
         {
             return "Fifteen-Love";
