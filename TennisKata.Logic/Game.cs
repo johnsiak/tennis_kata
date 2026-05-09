@@ -48,6 +48,11 @@ public class Game
             return "Forty-Love";
         }
 
+        if (_pointsPlayerOne == 4 && _pointsPlayerTwo == 3)
+        {
+            return $"Advantage {_playerOne.Name}";
+        }
+
         return "Love-All";
     }
 
