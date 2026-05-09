@@ -37,4 +37,16 @@ public class GameTests
 
         Assert.Equal("Fifteen-All", game.GetScore());
     }
+
+    [Fact]
+    public void PlayerOneAtTwoPointsPlayerTwoAtOnePointScoreIsThirtyFifteen()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+
+        Assert.Equal("Thirty-Fifteen", game.GetScore());
+    }
 }
