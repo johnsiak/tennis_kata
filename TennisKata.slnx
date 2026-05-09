@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TennisKata.Logic/TennisKata.Logic.csproj" />
+  <Project Path="TennisKata.Tests/TennisKata.Tests.csproj" />
+</Solution>
