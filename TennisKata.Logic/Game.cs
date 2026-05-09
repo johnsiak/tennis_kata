@@ -22,7 +22,7 @@ public class Game
                 return "Fifteen-All";
             }
 
-            if (_pointsPlayerOne == 3)
+            if (_pointsPlayerOne >= 3)
             {
                 return "Deuce";
             }
