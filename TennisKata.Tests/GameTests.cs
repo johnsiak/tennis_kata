@@ -8,10 +8,12 @@ public class GameTests
     private readonly Player _playerTwo = new Player("Roger");
 
     [Fact]
-    public void GameScoreStartsAtLoveAll()
+    public void PlayerOneWinsAPointScoreIsFifteenLove()
     {
         var game = new Game(_playerOne, _playerTwo);
 
-        Assert.Equal("Love-All", game.GetScore());
+        game.PointWonBy(_playerOne);
+
+        Assert.Equal("Fifteen-Love", game.GetScore());
     }
 }
