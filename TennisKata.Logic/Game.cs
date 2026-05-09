@@ -74,4 +74,25 @@ public class Game
             _pointsPlayerTwo++;
         }
     }
+
+    public bool IsOver()
+    {
+        return Winner() is not null;
+    }
+
+    public Player? Winner()
+    {
+        var lead = _pointsPlayerOne - _pointsPlayerTwo;
+        if (_pointsPlayerOne >= 4 && lead >= 2)
+        {
+            return _playerOne;
+        }
+
+        if (_pointsPlayerTwo >= 4 && lead <= -2)
+        {
+            return _playerTwo;
+        }
+
+        return null;
+    }
 }
