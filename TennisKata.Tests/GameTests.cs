@@ -108,4 +108,21 @@ public class GameTests
 
         Assert.Equal($"Advantage {_playerTwo.Name}", game.GetScore());
     }
+
+    [Fact]
+    public void PlayerTwoWinsAPointFromAdvantagePlayerOneReturnsToDeuce()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+
+        Assert.Equal("Deuce", game.GetScore());
+    }
 }
