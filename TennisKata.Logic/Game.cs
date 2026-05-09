@@ -21,6 +21,11 @@ public class Game
             {
                 return "Fifteen-All";
             }
+
+            if (_pointsPlayerOne == 3)
+            {
+                return "Deuce";
+            }
         }
 
         if (_pointsPlayerOne == 2 && _pointsPlayerTwo == 1)
