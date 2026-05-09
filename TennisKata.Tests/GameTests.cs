@@ -16,4 +16,14 @@ public class GameTests
 
         Assert.Equal("Fifteen-Love", game.GetScore());
     }
+
+    [Fact]
+    public void PlayerTwoWinsAPointScoreIsLoveFifteen()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerTwo);
+
+        Assert.Equal("Love-Fifteen", game.GetScore());
+    }
 }
