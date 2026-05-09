@@ -4,6 +4,7 @@ public class Game
 {
     private readonly Player _playerOne;
     private readonly Player _playerTwo;
+    private int _pointsPlayerOne;
 
     public Game(Player playerOne, Player playerTwo)
     {
@@ -13,6 +14,19 @@ public class Game
 
     public string GetScore()
     {
+        if (_pointsPlayerOne == 1)
+        {
+            return "Fifteen-Love";
+        }
+
         return "Love-All";
+    }
+
+    public void PointWonBy(Player player)
+    {
+        if (player == _playerOne)
+        {
+            _pointsPlayerOne++;
+        }
     }
 }
