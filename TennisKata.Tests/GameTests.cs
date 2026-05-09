@@ -49,4 +49,16 @@ public class GameTests
 
         Assert.Equal("Thirty-Fifteen", game.GetScore());
     }
+
+    [Fact]
+    public void ScoreCanReachFortyLove()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+
+        Assert.Equal("Forty-Love", game.GetScore());
+    }
 }
