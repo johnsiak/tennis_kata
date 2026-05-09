@@ -26,4 +26,15 @@ public class GameTests
 
         Assert.Equal("Love-Fifteen", game.GetScore());
     }
+
+    [Fact]
+    public void BothPlayersAtOnePointScoreIsFifteenAll()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+
+        Assert.Equal("Fifteen-All", game.GetScore());
+    }
 }
