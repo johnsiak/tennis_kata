@@ -38,6 +38,11 @@ public class Game
             return "Love-Fifteen";
         }
 
+        if (_pointsPlayerOne == 3 && _pointsPlayerTwo == 0)
+        {
+            return "Forty-Love";
+        }
+
         return "Love-All";
     }
 
