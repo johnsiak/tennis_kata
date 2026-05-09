@@ -15,6 +15,14 @@ public class Game
 
     public string GetScore()
     {
+        if (_pointsPlayerOne == _pointsPlayerTwo)
+        {
+            if (_pointsPlayerOne == 1)
+            {
+                return "Fifteen-All";
+            }
+        }
+
         if (_pointsPlayerOne == 1)
         {
             return "Fifteen-Love";
