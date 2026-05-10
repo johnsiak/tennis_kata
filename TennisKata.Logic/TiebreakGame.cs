@@ -53,6 +53,18 @@ public class TiebreakGame : IGame
 
     public Player? Winner()
     {
+        var lead = _pointsPlayerOne - _pointsPlayerTwo;
+
+        if (_pointsPlayerOne >= PointsToWin && lead >= 2)
+        {
+            return _playerOne;
+        }
+
+        if (_pointsPlayerTwo >= PointsToWin && lead <= -2)
+        {
+            return _playerTwo;
+        }
+
         return null;
     }
 }
