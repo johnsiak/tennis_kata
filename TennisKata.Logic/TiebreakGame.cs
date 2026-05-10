@@ -13,6 +13,8 @@ public class TiebreakGame : IGame
         _playerTwo = playerTwo;
     }
 
+    private const int PointsToWin = 7;
+
     public string GetScore()
     {
         return $"{_pointsPlayerOne}-{_pointsPlayerTwo}";
@@ -34,11 +36,11 @@ public class TiebreakGame : IGame
 
     public bool IsOver()
     {
-        return false;
+        return _pointsPlayerOne == PointsToWin || _pointsPlayerTwo == PointsToWin;
     }
 
     public Player? Winner()
     {
-        return null;
+        return _pointsPlayerOne == PointsToWin ? _playerOne : _playerTwo;
     }
 }
