@@ -40,4 +40,9 @@ public class Set
     {
         return $"{_gamesPlayerOne}-{_gamesPlayerTwo}";
     }
+
+    public bool IsOver()
+    {
+        return false;
+    }
 }
