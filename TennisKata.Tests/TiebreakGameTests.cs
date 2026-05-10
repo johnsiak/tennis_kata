@@ -34,4 +34,17 @@ public class TiebreakGameTests
 
         Assert.Equal("0-1", game.GetScore());
     }
+
+    [Fact]
+    public void PlayerOneReachesSevenPointsLeadingByTwoWinsTheTiebreak()
+    {
+        var game = new TiebreakGame(_playerOne, _playerTwo);
+
+        for (var i = 0; i < 5; i++) game.PointWonBy(_playerOne);
+        for (var i = 0; i < 5; i++) game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+
+        Assert.True(game.IsOver());
+    }
 }
