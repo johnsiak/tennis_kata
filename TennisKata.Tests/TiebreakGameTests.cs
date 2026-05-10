@@ -14,4 +14,14 @@ public class TiebreakGameTests
 
         Assert.Equal("0-0", game.GetScore());
     }
+
+    [Fact]
+    public void PlayerOneWinsAPointTiebreakScoreIsOneZero()
+    {
+        var game = new TiebreakGame(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+
+        Assert.Equal("1-0", game.GetScore());
+    }
 }
