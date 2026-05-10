@@ -17,48 +17,40 @@ public class Game
     {
         if (_pointsPlayerOne == _pointsPlayerTwo)
         {
-            if (_pointsPlayerOne == 1)
-            {
-                return "Fifteen-All";
-            }
-
             if (_pointsPlayerOne >= 3)
             {
                 return "Deuce";
             }
+
+            return $"{GetPointName(_pointsPlayerOne)}-All";
         }
 
-        if (_pointsPlayerOne == 2 && _pointsPlayerTwo == 1)
+        if (_pointsPlayerOne >= 4 || _pointsPlayerTwo >= 4)
         {
-            return "Thirty-Fifteen";
+            var lead = _pointsPlayerOne - _pointsPlayerTwo;
+            if (lead == 1)
+            {
+                return $"Advantage {_playerOne.Name}";
+            }
+
+            if (lead == -1)
+            {
+                return $"Advantage {_playerTwo.Name}";
+            }
         }
 
-        if (_pointsPlayerOne == 1)
+        return $"{GetPointName(_pointsPlayerOne)}-{GetPointName(_pointsPlayerTwo)}";
+    }
+
+    private static string GetPointName(int points)
+    {
+        return points switch
         {
-            return "Fifteen-Love";
-        }
-
-        if (_pointsPlayerTwo == 1)
-        {
-            return "Love-Fifteen";
-        }
-
-        if (_pointsPlayerOne == 3 && _pointsPlayerTwo == 0)
-        {
-            return "Forty-Love";
-        }
-
-        if (_pointsPlayerOne == 4 && _pointsPlayerTwo == 3)
-        {
-            return $"Advantage {_playerOne.Name}";
-        }
-
-        if (_pointsPlayerTwo == 4 && _pointsPlayerOne == 3)
-        {
-            return $"Advantage {_playerTwo.Name}";
-        }
-
-        return "Love-All";
+            0 => "Love",
+            1 => "Fifteen",
+            2 => "Thirty",
+            _ => "Forty"
+        };
     }
 
     public void PointWonBy(Player player)
