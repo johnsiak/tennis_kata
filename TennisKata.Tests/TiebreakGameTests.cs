@@ -72,4 +72,17 @@ public class TiebreakGameTests
 
         Assert.True(game.IsOver());
     }
+
+    [Fact]
+    public void WinnerReturnsNullDuringTiebreak()
+    {
+        var game = new TiebreakGame(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+
+        Assert.Null(game.Winner());
+    }
 }
