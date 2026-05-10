@@ -191,4 +191,19 @@ public class GameTests
 
         Assert.Null(game.Winner());
     }
+
+    [Fact]
+    public void WinnerReturnsPlayerTwoAfterPlayerTwoWins()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerTwo);
+
+        Assert.Equal(_playerTwo, game.Winner());
+    }
 }
