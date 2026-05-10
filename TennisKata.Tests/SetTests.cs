@@ -40,4 +40,14 @@ public class SetTests
 
         Assert.Equal("0-1", set.GetScore());
     }
+
+    [Fact]
+    public void IsOverReturnsFalseDuringSet()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        set.PointWonBy(_playerOne);
+
+        Assert.False(set.IsOver());
+    }
 }
