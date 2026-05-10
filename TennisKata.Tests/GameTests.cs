@@ -181,4 +181,14 @@ public class GameTests
 
         Assert.True(game.IsOver());
     }
+
+    [Fact]
+    public void WinnerReturnsNullDuringPlay()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+
+        Assert.Null(game.Winner());
+    }
 }
