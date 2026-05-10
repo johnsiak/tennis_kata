@@ -168,4 +168,17 @@ public class GameTests
 
         Assert.False(game.IsOver());
     }
+
+    [Fact]
+    public void IsOverReturnsTrueAfterGameIsWon()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerOne);
+
+        Assert.True(game.IsOver());
+    }
 }
