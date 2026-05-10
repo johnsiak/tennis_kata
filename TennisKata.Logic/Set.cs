@@ -45,4 +45,9 @@ public class Set
     {
         return false;
     }
+
+    public Player? Winner()
+    {
+        return null;
+    }
 }
