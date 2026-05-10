@@ -47,4 +47,16 @@ public class TiebreakGameTests
 
         Assert.True(game.IsOver());
     }
+
+    [Fact]
+    public void TiebreakAtSevenSixIsNotOver()
+    {
+        var game = new TiebreakGame(_playerOne, _playerTwo);
+
+        for (var i = 0; i < 6; i++) game.PointWonBy(_playerOne);
+        for (var i = 0; i < 6; i++) game.PointWonBy(_playerTwo);
+        game.PointWonBy(_playerOne);
+
+        Assert.False(game.IsOver());
+    }
 }
