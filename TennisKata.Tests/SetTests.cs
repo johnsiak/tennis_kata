@@ -14,4 +14,17 @@ public class SetTests
 
         Assert.Equal("0-0", set.GetScore());
     }
+
+    [Fact]
+    public void PlayerOneWinsAGameSetScoreIsOneZero()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+
+        Assert.Equal("1-0", set.GetScore());
+    }
 }
