@@ -36,7 +36,17 @@ public class TiebreakGame : IGame
 
     public bool IsOver()
     {
-        return _pointsPlayerOne == PointsToWin || _pointsPlayerTwo == PointsToWin;
+        if (_pointsPlayerOne == PointsToWin && _pointsPlayerOne - _pointsPlayerTwo >= 2)
+        {
+            return true;
+        }
+
+        if (_pointsPlayerTwo == PointsToWin && _pointsPlayerTwo - _pointsPlayerOne >= 2)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public Player? Winner()
