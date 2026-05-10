@@ -157,4 +157,15 @@ public class GameTests
         Assert.True(game.IsOver());
         Assert.Equal(_playerOne, game.Winner());
     }
+
+    [Fact]
+    public void IsOverReturnsFalseDuringPlay()
+    {
+        var game = new Game(_playerOne, _playerTwo);
+
+        game.PointWonBy(_playerOne);
+        game.PointWonBy(_playerTwo);
+
+        Assert.False(game.IsOver());
+    }
 }
