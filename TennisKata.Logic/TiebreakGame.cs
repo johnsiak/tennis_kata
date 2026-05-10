@@ -36,19 +36,7 @@ public class TiebreakGame : IGame
 
     public bool IsOver()
     {
-        var lead = _pointsPlayerOne - _pointsPlayerTwo;
-
-        if (_pointsPlayerOne >= PointsToWin && lead >= 2)
-        {
-            return true;
-        }
-
-        if (_pointsPlayerTwo >= PointsToWin && lead <= -2)
-        {
-            return true;
-        }
-
-        return false;
+        return Winner() is not null;
     }
 
     public Player? Winner()
