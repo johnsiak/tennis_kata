@@ -21,11 +21,18 @@ public class Set
 
         if (_currentGame.IsOver())
         {
-            if (_currentGame.Winner() == _playerOne)
+            var winner = _currentGame.Winner();
+            if (winner == _playerOne)
             {
                 _gamesPlayerOne++;
-                _currentGame = new Game(_playerOne, _playerTwo);
             }
+
+            if (winner == _playerTwo)
+            {
+                _gamesPlayerTwo++;
+            }
+
+            _currentGame = new Game(_playerOne, _playerTwo);
         }
     }
 
