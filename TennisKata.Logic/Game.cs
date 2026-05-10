@@ -1,6 +1,6 @@
 namespace TennisKata.Logic;
 
-public class Game
+public class Game : IGame
 {
     private readonly Player _playerOne;
     private readonly Player _playerTwo;
