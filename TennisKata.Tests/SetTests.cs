@@ -50,4 +50,14 @@ public class SetTests
 
         Assert.False(set.IsOver());
     }
+
+    [Fact]
+    public void WinnerReturnsNullDuringSet()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        set.PointWonBy(_playerOne);
+
+        Assert.Null(set.Winner());
+    }
 }
