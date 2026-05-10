@@ -53,6 +53,6 @@ public class TiebreakGame : IGame
 
     public Player? Winner()
     {
-        return _pointsPlayerOne == PointsToWin ? _playerOne : _playerTwo;
+        return null;
     }
 }
