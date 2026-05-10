@@ -4,6 +4,7 @@ public class TiebreakGame : IGame
 {
     private readonly Player _playerOne;
     private readonly Player _playerTwo;
+    private int _pointsPlayerOne;
 
     public TiebreakGame(Player playerOne, Player playerTwo)
     {
@@ -13,11 +14,15 @@ public class TiebreakGame : IGame
 
     public string GetScore()
     {
-        return "0-0";
+        return $"{_pointsPlayerOne}-0";
     }
 
     public void PointWonBy(Player player)
     {
+        if (player == _playerOne)
+        {
+            _pointsPlayerOne++;
+        }
     }
 
     public bool IsOver()
