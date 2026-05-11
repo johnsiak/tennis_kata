@@ -60,4 +60,32 @@ public class SetTests
 
         Assert.Null(set.Winner());
     }
+
+private static void WinGame(Set set, Player player)
+    {
+        for (var i = 0; i < 4; i++)
+        {
+            set.PointWonBy(player);
+        }
+    }
+
+    private static void WinGames(Set set, Player player, int games)
+    {
+        for (var i = 0; i < games; i++)
+        {
+            WinGame(set, player);
+        }
+    }
+
+    [Fact]
+    public void PlayerOneWinsSixGamesToThreeWinsTheSet()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        WinGames(set, _playerOne, 3);
+        WinGames(set, _playerTwo, 3);
+        WinGames(set, _playerOne, 3);
+
+        Assert.True(set.IsOver());
+    }
 }
