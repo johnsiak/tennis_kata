@@ -78,6 +78,6 @@ public class Set
 
     public Player? Winner()
     {
-        return null;
+        return _winner;
     }
 }
