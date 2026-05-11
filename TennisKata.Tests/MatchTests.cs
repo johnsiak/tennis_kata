@@ -55,4 +55,14 @@ public class MatchTests
         Assert.Equal("6-0, 3-6", match.GetScore());
     }
 
+    [Fact]
+    public void MatchScoreIncludesCurrentSetScoreAlongsideCompletedSets()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerOne, 6);
+        WinGame(match, _playerOne);
+
+        Assert.Equal("6-0, 1-0", match.GetScore());
+    }
 }
