@@ -7,7 +7,6 @@ public class Set
     private int _gamesPlayerOne;
     private int _gamesPlayerTwo;
     private IGame _currentGame;
-    private bool _isOver;
     private Player? _winner;
 
     public Set(Player playerOne, Player playerTwo)
@@ -36,7 +35,6 @@ public class Set
 
             if (_currentGame is TiebreakGame)
             {
-                _isOver = true;
                 _winner = winner;
                 return;
             }
@@ -44,14 +42,12 @@ public class Set
             var lead = _gamesPlayerOne - _gamesPlayerTwo;
             if (_gamesPlayerOne >= 6 && lead >= 2)
             {
-                _isOver = true;
                 _winner = _playerOne;
                 return;
             }
 
             if (_gamesPlayerTwo >= 6 && lead <= -2)
             {
-                _isOver = true;
                 _winner = _playerTwo;
                 return;
             }
@@ -73,7 +69,7 @@ public class Set
 
     public bool IsOver()
     {
-        return _isOver;
+        return Winner() is not null;
     }
 
     public Player? Winner()
