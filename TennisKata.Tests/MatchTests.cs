@@ -14,4 +14,32 @@ public class MatchTests
 
         Assert.Equal("0-0", match.GetScore());
     }
+
+    private static void WinGame(Match match, Player player)
+    {
+        for (var i = 0; i < 4; i++)
+        {
+            match.PointWonBy(player);
+        }
+    }
+
+    private static void WinGames(Match match, Player player, int games)
+    {
+        for (var i = 0; i < games; i++)
+        {
+            WinGame(match, player);
+        }
+    }
+
+    [Fact]
+    public void PlayerOneWinsASetMatchShowsCompletedSetScore()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerOne, 5);
+        WinGames(match, _playerTwo, 3);
+        WinGame(match, _playerOne);
+
+        Assert.Equal("6-3", match.GetScore());
+    }
 }
