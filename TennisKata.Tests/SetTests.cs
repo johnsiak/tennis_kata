@@ -100,4 +100,23 @@ private static void WinGame(Set set, Player player)
 
         Assert.False(set.IsOver());
     }
+
+    [Fact]
+    public void SetAtSixSixCurrentGameBecomesATiebreak()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        WinGames(set, _playerOne, 5);
+        WinGames(set, _playerTwo, 5);
+        WinGames(set, _playerOne, 1);
+        WinGames(set, _playerTwo, 1);
+
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+        set.PointWonBy(_playerOne);
+
+        Assert.Equal("6-6", set.GetScore());
+        Assert.False(set.IsOver());
+    }
 }
