@@ -65,4 +65,14 @@ public class MatchTests
 
         Assert.Equal("6-0, 1-0", match.GetScore());
     }
+
+    [Fact]
+    public void IsOverReturnsFalseDuringMatch()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        match.PointWonBy(_playerOne);
+
+        Assert.False(match.IsOver());
+    }
 }
