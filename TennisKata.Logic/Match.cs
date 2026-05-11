@@ -20,6 +20,11 @@ public class Match
 
     public void PointWonBy(Player player)
     {
+        if (_isOver)
+        {
+            return;
+        }
+
         _currentSet.PointWonBy(player);
 
         if (_currentSet.IsOver())
@@ -39,12 +44,14 @@ public class Match
             {
                 _isOver = true;
                 _winner = _playerOne;
+                return;
             }
 
             if (_setsPlayerTwo == 2)
             {
                 _isOver = true;
                 _winner = _playerTwo;
+                return;
             }
 
             _completedSetScores.Add(_currentSet.GetScore());
