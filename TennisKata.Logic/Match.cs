@@ -82,6 +82,6 @@ public class Match
 
     public Player? Winner()
     {
-        return null;
+        return _winner;
     }
 }
