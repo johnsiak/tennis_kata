@@ -75,4 +75,14 @@ public class MatchTests
 
         Assert.False(match.IsOver());
     }
+
+    [Fact]
+    public void WinnerReturnsNullDuringMatch()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        match.PointWonBy(_playerOne);
+
+        Assert.Null(match.Winner());
+    }
 }
