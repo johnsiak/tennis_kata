@@ -85,4 +85,16 @@ public class MatchTests
 
         Assert.Null(match.Winner());
     }
+
+    [Fact]
+    public void PlayerOneWinsTwoSetsWinsTheMatch()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerOne, 6);
+        WinGames(match, _playerTwo, 3);
+        WinGames(match, _playerOne, 6);
+
+        Assert.True(match.IsOver());
+    }
 }
