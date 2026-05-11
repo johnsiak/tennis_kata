@@ -34,6 +34,13 @@ public class Set
                 _gamesPlayerTwo++;
             }
 
+            if (_currentGame is TiebreakGame)
+            {
+                _isOver = true;
+                _winner = winner;
+                return;
+            }
+
             var lead = _gamesPlayerOne - _gamesPlayerTwo;
             if (_gamesPlayerOne >= 6 && lead >= 2)
             {
