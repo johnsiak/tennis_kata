@@ -7,6 +7,8 @@ public class Set
     private int _gamesPlayerOne;
     private int _gamesPlayerTwo;
     private IGame _currentGame;
+    private bool _isOver;
+    private Player? _winner;
 
     public Set(Player playerOne, Player playerTwo)
     {
@@ -32,6 +34,20 @@ public class Set
                 _gamesPlayerTwo++;
             }
 
+            if (_gamesPlayerOne >= 6)
+            {
+                _isOver = true;
+                _winner = _playerOne;
+                return;
+            }
+
+            if (_gamesPlayerTwo >= 6)
+            {
+                _isOver = true;
+                _winner = _playerTwo;
+                return;
+            }
+
             _currentGame = new Game(_playerOne, _playerTwo);
         }
     }
@@ -43,7 +59,7 @@ public class Set
 
     public bool IsOver()
     {
-        return false;
+        return _isOver;
     }
 
     public Player? Winner()
