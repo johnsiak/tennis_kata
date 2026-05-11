@@ -6,6 +6,10 @@ public class Match
     private readonly Player _playerTwo;
     private Set _currentSet;
     private readonly List<string> _completedSetScores = new();
+    private int _setsPlayerOne;
+    private int _setsPlayerTwo;
+    private bool _isOver;
+    private Player? _winner;
 
     public Match(Player playerOne, Player playerTwo)
     {
@@ -20,6 +24,29 @@ public class Match
 
         if (_currentSet.IsOver())
         {
+            var setWinner = _currentSet.Winner();
+            if (setWinner == _playerOne)
+            {
+                _setsPlayerOne++;
+            }
+
+            if (setWinner == _playerTwo)
+            {
+                _setsPlayerTwo++;
+            }
+
+            if (_setsPlayerOne == 2)
+            {
+                _isOver = true;
+                _winner = _playerOne;
+            }
+
+            if (_setsPlayerTwo == 2)
+            {
+                _isOver = true;
+                _winner = _playerTwo;
+            }
+
             _completedSetScores.Add(_currentSet.GetScore());
             _currentSet = new Set(_playerOne, _playerTwo);
         }
@@ -32,7 +59,7 @@ public class Match
             return _currentSet.GetScore();
         }
 
-        var scores = new List<string>(_completedSetScores)
+        var scores = new List<string>(_completedSetScores);
         if (_currentSet.GetScore() != "0-0")
         {
             scores.Add(_currentSet.GetScore());
@@ -43,7 +70,7 @@ public class Match
 
     public bool IsOver()
     {
-        return false;
+        return _isOver;
     }
 
     public Player? Winner()
