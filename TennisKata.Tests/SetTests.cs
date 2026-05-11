@@ -88,4 +88,16 @@ private static void WinGame(Set set, Player player)
 
         Assert.True(set.IsOver());
     }
+
+    [Fact]
+    public void SetAtSixFiveIsNotOver()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        WinGames(set, _playerOne, 5);
+        WinGames(set, _playerTwo, 5);
+        WinGame(set, _playerOne);
+
+        Assert.False(set.IsOver());
+    }
 }
