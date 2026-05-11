@@ -49,6 +49,12 @@ public class Set
                 return;
             }
 
+            if (_gamesPlayerOne == 6 && _gamesPlayerTwo == 6)
+            {
+                _currentGame = new TiebreakGame(_playerOne, _playerTwo);
+                return;
+            }
+
             _currentGame = new Game(_playerOne, _playerTwo);
         }
     }
