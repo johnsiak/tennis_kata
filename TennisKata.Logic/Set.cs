@@ -34,14 +34,15 @@ public class Set
                 _gamesPlayerTwo++;
             }
 
-            if (_gamesPlayerOne >= 6)
+            var lead = _gamesPlayerOne - _gamesPlayerTwo;
+            if (_gamesPlayerOne >= 6 && lead >= 2)
             {
                 _isOver = true;
                 _winner = _playerOne;
                 return;
             }
 
-            if (_gamesPlayerTwo >= 6)
+            if (_gamesPlayerTwo >= 6 && lead <= -2)
             {
                 _isOver = true;
                 _winner = _playerTwo;
