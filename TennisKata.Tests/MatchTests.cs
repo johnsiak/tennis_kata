@@ -97,4 +97,19 @@ public class MatchTests
 
         Assert.True(match.IsOver());
     }
+
+    [Fact]
+    public void NoNewSetIsStartedAfterMatchIsOver()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerOne, 6);
+        WinGames(match, _playerOne, 6);
+
+        var finalScore = match.GetScore();
+
+        WinGame(match, _playerOne);
+
+        Assert.Equal(finalScore, match.GetScore());
+    }
 }
