@@ -119,4 +119,22 @@ private static void WinGame(Set set, Player player)
         Assert.Equal("6-6", set.GetScore());
         Assert.False(set.IsOver());
     }
+
+    [Fact]
+    public void WinningTheTiebreakWinsTheSet()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        WinGames(set, _playerOne, 5);
+        WinGames(set, _playerTwo, 5);
+        WinGame(set, _playerOne);
+        WinGame(set, _playerTwo);
+
+        for (var i = 0; i < 7; i++)
+        {
+            set.PointWonBy(_playerOne);
+        }
+
+        Assert.True(set.IsOver());
+    }
 }
