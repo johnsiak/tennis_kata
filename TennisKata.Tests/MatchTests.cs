@@ -112,4 +112,15 @@ public class MatchTests
 
         Assert.Equal(finalScore, match.GetScore());
     }
+
+    [Fact]
+    public void WinnerReturnsCorrectPlayerAfterMatchWin()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerTwo, 6);
+        WinGames(match, _playerTwo, 6);
+
+        Assert.Equal(_playerTwo, match.Winner());
+    }
 }
