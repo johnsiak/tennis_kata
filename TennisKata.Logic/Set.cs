@@ -13,7 +13,7 @@ public class Set
     {
         _playerOne = playerOne;
         _playerTwo = playerTwo;
-        _currentGame = new Game(_playerOne, _playerTwo);
+        _currentGame = CreateNewGame();
     }
 
     public void PointWonBy(Player player)
@@ -52,13 +52,7 @@ public class Set
                 return;
             }
 
-            if (_gamesPlayerOne == 6 && _gamesPlayerTwo == 6)
-            {
-                _currentGame = new TiebreakGame(_playerOne, _playerTwo);
-                return;
-            }
-
-            _currentGame = new Game(_playerOne, _playerTwo);
+            _currentGame = CreateNewGame();
         }
     }
 
@@ -75,5 +69,15 @@ public class Set
     public Player? Winner()
     {
         return _winner;
+    }
+
+    private IGame CreateNewGame()
+    {
+        if (_gamesPlayerOne == 6 && _gamesPlayerTwo == 6)
+        {
+            return new TiebreakGame(_playerOne, _playerTwo);
+        }
+
+        return new Game(_playerOne, _playerTwo);
     }
 }
