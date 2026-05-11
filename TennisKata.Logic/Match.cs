@@ -5,7 +5,7 @@ public class Match
     private readonly Player _playerOne;
     private readonly Player _playerTwo;
     private Set _currentSet;
-    private string _completedSetScore = "";    
+    private readonly List<string> _completedSetScores = new();
 
     public Match(Player playerOne, Player playerTwo)
     {
@@ -20,18 +20,18 @@ public class Match
 
         if (_currentSet.IsOver())
         {
-            _completedSetScore = _currentSet.GetScore();
+            _completedSetScores.Add(_currentSet.GetScore());
             _currentSet = new Set(_playerOne, _playerTwo);
         }
     }
 
     public string GetScore()
     {
-        if (string.IsNullOrEmpty(_completedSetScore))
+        if (_completedSetScores.Count == 0)
         {
             return _currentSet.GetScore();
         }
 
-        return _completedSetScore;
+        return string.Join(", ", _completedSetScores);
     }
 }
