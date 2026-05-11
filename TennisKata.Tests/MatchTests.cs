@@ -42,4 +42,17 @@ public class MatchTests
 
         Assert.Equal("6-3", match.GetScore());
     }
+
+    [Fact]
+    public void PlayerTwoWinsASetMatchShowsBothCompletedSetScores()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerOne, 6);
+        WinGames(match, _playerOne, 3);
+        WinGames(match, _playerTwo, 6);
+
+        Assert.Equal("6-0, 3-6", match.GetScore());
+    }
+
 }
