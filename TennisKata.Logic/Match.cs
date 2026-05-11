@@ -40,4 +40,9 @@ public class Match
 
         return string.Join(", ", scores);
     }
+
+    public bool IsOver()
+    {
+        return false;
+    }
 }
