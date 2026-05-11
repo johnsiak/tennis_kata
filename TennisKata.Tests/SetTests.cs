@@ -137,4 +137,14 @@ private static void WinGame(Set set, Player player)
 
         Assert.True(set.IsOver());
     }
+
+    [Fact]
+    public void WinnerReturnsCorrectPlayerAfterSetWin()
+    {
+        var set = new Set(_playerOne, _playerTwo);
+
+        WinGames(set, _playerOne, 6);
+
+        Assert.Equal(_playerOne, set.Winner());
+    }
 }
