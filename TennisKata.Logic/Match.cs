@@ -45,4 +45,9 @@ public class Match
     {
         return false;
     }
+
+    public Player? Winner()
+    {
+        return null;
+    }
 }
