@@ -32,6 +32,12 @@ public class Match
             return _currentSet.GetScore();
         }
 
-        return string.Join(", ", _completedSetScores);
+        var scores = new List<string>(_completedSetScores)
+        if (_currentSet.GetScore() != "0-0")
+        {
+            scores.Add(_currentSet.GetScore());
+        }
+
+        return string.Join(", ", scores);
     }
 }
