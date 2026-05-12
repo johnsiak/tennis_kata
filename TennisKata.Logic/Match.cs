@@ -8,7 +8,6 @@ public class Match
     private readonly List<string> _completedSetScores = new();
     private int _setsPlayerOne;
     private int _setsPlayerTwo;
-    private bool _isOver;
     private Player? _winner;
 
     public Match(Player playerOne, Player playerTwo)
@@ -20,7 +19,7 @@ public class Match
 
     public void PointWonBy(Player player)
     {
-        if (_isOver)
+        if (IsOver())
         {
             return;
         }
@@ -29,33 +28,7 @@ public class Match
 
         if (_currentSet.IsOver())
         {
-            var setWinner = _currentSet.Winner();
-            if (setWinner == _playerOne)
-            {
-                _setsPlayerOne++;
-            }
-
-            if (setWinner == _playerTwo)
-            {
-                _setsPlayerTwo++;
-            }
-
-            if (_setsPlayerOne == 2)
-            {
-                _isOver = true;
-                _winner = _playerOne;
-                return;
-            }
-
-            if (_setsPlayerTwo == 2)
-            {
-                _isOver = true;
-                _winner = _playerTwo;
-                return;
-            }
-
-            _completedSetScores.Add(_currentSet.GetScore());
-            _currentSet = new Set(_playerOne, _playerTwo);
+            HandleSetCompletion();
         }
     }
 
@@ -83,5 +56,34 @@ public class Match
     public Player? Winner()
     {
         return _winner;
+    }
+
+    private void HandleSetCompletion()
+    {
+        var setWinner = _currentSet.Winner();
+        if (setWinner == _playerOne)
+        {
+            _setsPlayerOne++;
+        }
+
+        if (setWinner == _playerTwo)
+        {
+            _setsPlayerTwo++;
+        }
+
+        if (_setsPlayerOne == 2)
+        {
+            _winner = _playerOne;
+            return;
+        }
+
+        if (_setsPlayerTwo == 2)
+        {
+            _winner = _playerTwo;
+            return;
+        }
+
+        _completedSetScores.Add(_currentSet.GetScore());
+        _currentSet = new Set(_playerOne, _playerTwo);
     }
 }
