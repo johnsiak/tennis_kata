@@ -123,4 +123,35 @@ public class MatchTests
 
         Assert.Equal(_playerTwo, match.Winner());
     }
+
+    [Fact]
+    public void SpecificScenarioShowsCorrectSetScore()
+    {
+        var match = new Match(_playerOne, _playerTwo);
+
+        WinGames(match, _playerTwo, 3);
+        WinGames(match, _playerOne, 5);
+        WinGames(match, _playerTwo, 4);
+
+        Assert.Equal("5-7", match.GetScore());
+
+        WinGames(match, _playerOne, 5);
+        WinGames(match, _playerTwo, 5);
+        WinGame(match, _playerOne);
+        WinGame(match, _playerTwo);
+
+        for (var i = 0; i < 7; i++)
+        {
+            match.PointWonBy(_playerOne);
+        }
+
+        Assert.Equal("5-7, 7-6", match.GetScore());
+
+        WinGames(match, _playerOne, 3);
+        WinGames(match, _playerTwo, 3);
+        WinGames(match, _playerOne, 3);
+
+        Assert.Equal("5-7, 7-6, 6-3", match.GetScore());
+        Assert.Equal(_playerOne, match.Winner());
+    }
 }
