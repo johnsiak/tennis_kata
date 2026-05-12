@@ -77,7 +77,7 @@ public class Match
 
     public bool IsOver()
     {
-        return _isOver;
+        return Winner() is not null;
     }
 
     public Player? Winner()
